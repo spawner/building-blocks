@@ -5,12 +5,19 @@ Pre-built modules to help jumpstart building ML-enabled applications.
 Here you can find modules in various languages supporting: 
 
 [ ]Authentication & Users
+
 [ ]Pricing & Payment Integrations
+
 [ ]State Management
+
 [ ]Buttons & Other Elements
+
 [ ]Fonts 
+
 [ ]Stock Photos 
+
 [ ]Data Engineering 
+
 [ ]Graphing/Charting 
 
 ## Contributing 
