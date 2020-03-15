@@ -1,40 +1,64 @@
 import requests
 import json
-import base64
-import pandas as pd 
-from datetime import datetime
+
 
 # Replace with your API Key, get key from https://spawner.ai
-api_key = 'sp_42ac416e99569d5ea3281013db5a9f33' 
+api_key = '' 
 
-# Replace with whatever URL you want to use
-url = "http://spawnerapi.com/image-classifier/" + api_key
+###### ENDPOINT TESTS #######
+#############################
+###### POST ENDPOINTS #######
+def clean(): 
+    text = 'here is $ ? dir/ty teXt. .'
+    url = 'https://spawnerapi.com/clean/' + token
+    data = {'text': text}
+    headers = {'Content-type': 'application/json'}
 
-# prepare headers for http request, headers will differ depending on endpoint 
-content_type = 'image/jpeg'
-headers = {'content-type': content_type}
+    x = requests.post(url, data=json.dumps(data), headers=headers)
+    print(x.text)
 
-# Base64 encode a PNG/JPEG image
-b64 = base64.b64encode(open('data/obelisk.jpg','rb').read())
+def sentiment(): 
+    text = 'This api is so good.'
+    url = 'https://spawnerapi.com/sentiment/' + token
+    data = {'text': text}
+    headers = {'Content-type': 'application/json'}
 
-response = requests.post(url, data=b64, headers=headers)
-response_text = json.loads(response.text) 
+    x = requests.post(url, data=json.dumps(data), headers=headers)
+    print(x.text)
 
-# Loop over JSON and send to lists
-class_membership = []
-probability = []
-time = []
-for i in response_text:
-    class_membership.append(i['class'])
-    probability.append(i['probability'])
-    time.append(str(datetime.now()))
+def understand(): 
+    text = 'What are the keywords in this phrase?'
+    url = 'https://spawnerapi.com/understand/' + token
+    data = {'text': text}
+    headers = {'Content-type': 'application/json'}
 
-print(class_membership)
-print(probability)
-print(time)
+    x = requests.post(url, data=json.dumps(data), headers=headers)
+    print(x.text)
 
-# Add to dataframe and output to .csv
-df = pd.DataFrame(list(zip(class_membership, probability, time)), columns =['Class', 'Probability', 'Time']) 
-print(df) 
+def answer(): 
+    text = 'What is the p/e ratio of apple?'
+    url = 'https://spawnerapi.com/answer/' + token
+    data = {'text': text}
+    headers = {'Content-type': 'application/json'}
 
-df.to_csv('data/image_data.csv', mode='a', index=False)
+    x = requests.post(url, data=json.dumps(data), headers=headers)
+    print(x.text)
+
+def forecast(): 
+    dates = '12-01-01, 12-01-02'
+    values = '1, 2'
+    periods = '3'
+    url = 'https://spawnerapi.com/forecast/' + token
+    data = {'dates': dates, 'values': values, 'periods': periods}
+    headers = {'Content-type': 'application/json'}
+
+    x = requests.post(url, data=json.dumps(data), headers=headers)
+    print(x.text)
+
+####### GET ENDPOINTS ########
+def fundamentals(): 
+    url = "https://spawnerapi.com/fundamentals/" + token
+    response = requests.get(url)
+    print(response.json())
+
+clean()
