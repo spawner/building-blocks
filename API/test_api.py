@@ -2,7 +2,7 @@ import requests
 import json
 
 
-# INSERT YOUR TOKEN HERE 
+# Replace with your token, you can get a token at https://spawner.ai
 token = ''
 
 ###### ENDPOINT TESTS #######
