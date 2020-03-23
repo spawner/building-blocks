@@ -52,17 +52,5 @@ def forecast():
 
     x = requests.post(url, data=json.dumps(data), headers=headers)
     print(x.text)
-    
-def image_classify(): 
-    url = "https://spawnerapi.com/image-classifier/" + token
-
-    content_type = 'image/jpeg'
-    headers = {'content-type': content_type}
-
-    # Base64 encode a PNG/JPEG image
-    b64 = base64.b64encode(open('data/obelisk.jpg','rb').read())
-
-    response = requests.post(url, data=b64, headers=headers)
-    response_text = json.loads(response.text) 
 
 clean()
