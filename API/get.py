@@ -6,6 +6,18 @@ import json
 token = ''
 
 ####### GET ENDPOINTS ########
+def bollinger(): 
+    ticker = 'aapl'
+    url = "http://127.0.0.1:5000/bollinger/" + ticker + "/" + token
+    response = requests.get(url)
+    print(response.json())
+    
+def rsi(): 
+    ticker = 'aapl'
+    url = "http://127.0.0.1:5000/rsi/" + ticker + "/" + token
+    response = requests.get(url)
+    print(response.json())
+
 def fundamentals(): 
     url = "https://spawnerapi.com/fundamentals/" + token
     response = requests.get(url)
